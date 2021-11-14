@@ -33,7 +33,7 @@ html = str(a)  # casting to string extracts the value
 # or directly to UTF-8 encoded bytes:
 html_bytes = bytes(a)  # casting to bytes is a shortcut to str(a).encode('utf-8')
 
-print(html)
+
 
 with open('index.html', 'wb') as f:
     f.write(bytes(html_bytes))
