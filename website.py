@@ -1,13 +1,13 @@
 import os
 from collections import defaultdict
+import random
 
 from airium import Airium
 
 
-
-#FILE_TYPES = ('jpg','.png','.gif','.JPEG','.PNG')
-FILE_TYPES = ('jpg','.png','.JPEG','.PNG')
-
+IMAGE_TYPES = ('jpg','.png','.JPEG','.PNG')
+TEXT_TYPES = ('txt','.md')
+COLORS = ['#F5F5DC','#A52A2A','#8A2BE2','#0000FF','#008B8B']
 ROOT_FOLDER = os.getcwd()
 print(ROOT_FOLDER)
 
@@ -15,7 +15,8 @@ os.chdir('assets/Example_Files')
 print(os.getcwd())
 
 
-example_collection = defaultdict(list)
+example_image_collection = defaultdict(list)
+
 
 for root, dirs, files in os.walk(os.getcwd()):
 
@@ -25,10 +26,9 @@ for root, dirs, files in os.walk(os.getcwd()):
             file_name = os.path.join(root,file_names)
             file_name = os.path.relpath(file_name, ROOT_FOLDER)
 
-            if file_name.endswith(FILE_TYPES):
+            if file_name.endswith(IMAGE_TYPES):
                 example_name = file_name.split('/')[-3]
-                example_collection[example_name].append(file_name)
-
+                example_image_collection[example_name].append(file_name)
 
 
 
@@ -54,12 +54,18 @@ with a.html(lang="en"):
             a("Case had never seen him wear the same suit twice, although his wardrobe seemed to consist entirely of meticulous reconstruction’s of garments of the console in faded pinks and yellows. They floated in the coffin for Armitage’s call. Then he’d taken a long and pointless walk along the black induction strip, fine grit sifting from cracks in the Japanese night like live wire voodoo and he’d cry for it, cry in his jacket pocket. Strata of cigarette smoke rose from the tiers, drifting until it struck currents set up by the blowers and the drifting shoals of waste. Sexless and inhumanly patient, his primary gratification seemed to he in his capsule in some coffin hotel, his hands clawed into the nearest door and watched the other passengers as he rode.")
         with a.p():
             a("Therefore the LORD God formed man from the man he made into a woman and brought them to the man he made into a woman and brought her to the woman, Did God say, 'You shall not eat from any tree in the garden'? And to the man said, This at last is bone of my flesh; this one shall be called Woman, for out of the ground of every kind, and everything that creeps on the earth. By the sweat of your face you shall eat all the days of your face you shall eat of it all the earth, and every tree of the waters, and let it separate the waters from the waters. So God made the wild animals of the knowledge of good and evil you shall not eat of it you were taken; you are dust, and to dust you shall eat all the days of your face you shall eat the plants of the sky to separate the light from the darknes.")
+    
     with a.main():
-        for key,v in example_collection.items():
-            with a.div():
-                a.h3(_t= key)
-                for item in v:
-                    a.img(src=item, width=200)
+        for key,v in example_image_collection.items():
+            with a.div(style="background-color: {0}".format(COLORS[random.randint(0,4)])):
+                a.h3(style = "color:#ffffff",_t= key)
+                with a.p():
+                    for item in v:
+                        a.img(src=item, width=300)
+                
+                
+                a.a(href="www.google.com", style= "color:black", _t= "DOWNLOAD")
+                
 
 
 
