@@ -5,6 +5,13 @@ import random
 from airium import Airium
 
 
+def rec_split(s):
+    rest, tail = os.path.split(s)
+    if rest in ('', os.path.sep):
+        return tail,
+    return rec_split(rest) + (tail,)
+
+
 IMAGE_TYPES = ('jpg','.png','.JPEG','.JPG','.PNG')
 TEXT_TYPES = ('txt','.md')
 COLORS = ['#F5F5DC','#A52A2A','#8A2BE2','#0000FF','#008B8B']
@@ -28,7 +35,8 @@ for root, dirs, files in os.walk(os.getcwd()):
 
             if file_name.endswith(IMAGE_TYPES):
                 print(file_name)
-                example_name = file_name.split('\\')[-3]
+                #example_name = file_name.split('\\')[-3]
+                example_name = rec_split(file_name)[-3]
                 example_image_collection[example_name].append(file_name)
 
 
