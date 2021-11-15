@@ -1,0 +1,21 @@
+* {
+    margin: 1rem;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+
+.examples{  
+
+    margin-bottom: 2rem;
+  }
+
+  .download_link{
+      color: brown;
+      text-decoration: none;
+      font-weight: 900;
+      border: 2px solid brown;
+      border-radius: 12px;
+      padding: 2px;
+  }
