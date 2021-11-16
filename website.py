@@ -21,6 +21,7 @@ ROOT_FOLDER = os.getcwd()
 #/Users/mpmac/Documents/GitHub/web_application
 print(ROOT_FOLDER) 
 
+
 os.chdir('assets/Example_Files')
 print(os.getcwd())
 
